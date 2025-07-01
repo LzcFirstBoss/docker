@@ -1,0 +1,10 @@
+# docker-compose.yml
+version: "3.9"
+
+services:
+  hanoi:
+    image: hanoi-app
+    build: .
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
