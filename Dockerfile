@@ -1,20 +1,8 @@
-# Usa imagem oficial do Node
-FROM node:18-alpine
-
-# Define pasta de trabalho dentro do container
+# Dockerfile
+FROM node:20-slim
 WORKDIR /app
-
-# Copia os arquivos de dependência primeiro
 COPY package*.json ./
-
-# Instala apenas dependências de produção
-RUN npm ci --omit=dev
-
-# Copia o restante do projeto
+RUN npm install
 COPY . .
-
-# Expõe a porta
 EXPOSE 3000
-
-# Comando que inicia o servidor
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
